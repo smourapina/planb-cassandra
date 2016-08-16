@@ -46,8 +46,10 @@ else
 fi
 echo "Broadcast IP address is $BROADCAST_ADDRESS ..."
 
-export DATA_DIR=${DATA_DIR:-/var/lib/cassandra}
-export COMMIT_LOG_DIR=${COMMIT_LOG_DIR:-/var/lib/cassandra/commit_logs}
+export DATA_DIR=${DATA_DIR:-/var/lib/cassandra/data}
+export COMMIT_LOG_DIR=${COMMIT_LOG_DIR:-/var/lib/cassandra/data/commit_logs}
+
+mkdir -p $DATA_DIR
 
 if [ -z "$TRUSTSTORE" ]; then
     echo "TRUSTSTORE must be set (base64 encoded)."
